@@ -8,25 +8,40 @@ def multiply(a, b):
     return a * b
 
 def divide(a, b):
-    if b != 0:
-        return a / b
-    return "Error! Division by zero."
+    if b == 0:
+        return "Error: Cannot divide by zero!"
+    return a / b
 
-print("Simple Calculator")
-print("1. Add\n2. Subtract\n3. Multiply\n4. Divide")
+def menu():
+    print("===== SIMPLE CALCULATOR =====")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Exit")
 
-choice = input("Enter choice (1-4): ")
+while True:
+    menu()
+    choice = input("Enter your choice (1-5): ")
 
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
+    if choice == "5":
+        print("Goodbye!")
+        break
 
-if choice == '1':
-    print(add(num1, num2))
-elif choice == '2':
-    print(subtract(num1, num2))
-elif choice == '3':
-    print(multiply(num1, num2))
-elif choice == '4':
-    print(divide(num1, num2))
-else:
-    print("Invalid choice")
+    if choice not in ["1", "2", "3", "4"]:
+        print("Invalid option, try again.")
+        continue
+
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+
+    if choice == "1":
+        print("Result:", add(num1, num2))
+    elif choice == "2":
+        print("Result:", subtract(num1, num2))
+    elif choice == "3":
+        print("Result:", multiply(num1, num2))
+    elif choice == "4":
+        print("Result:", divide(num1, num2))
+
+    print()  # Blank line
